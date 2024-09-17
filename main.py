@@ -4,7 +4,7 @@ import logging
 import os
 
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
+from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
 logging.basicConfig(level=logging.INFO)
 
@@ -14,7 +14,7 @@ dp = Dispatcher()
 @dp.message()
 async def start(message: types.Message):
     webAppInfo = types.WebAppInfo(url="https://n3ke2710.github.io")
-    builder = ReplyKeyboardBuilder()
+    builder = InlineKeyboardBuilder()
     builder.add(types.KeyboardButton(text='Отправить данные', web_app=webAppInfo))
     
     await message.answer(text='Привет!', reply_markup=builder.as_markup())
